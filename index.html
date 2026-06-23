@@ -2094,7 +2094,7 @@ function cancelBooking(id){
   const slotLabel = formatBookingTime(booking.time);
   const msg = `Namaste ${booking.fname} ji 🙏\n\nWe regret to inform you that your appointment at *Make Me Salon* has been cancelled by our team.\n\n📅 Date: ${booking.date}\n⏰ Time: ${slotLabel}\n💄 Service: ${booking.service || 'Your booking'}\n\nWe sincerely apologise for the inconvenience. Please contact us to reschedule at your convenience.\n\n— Jaya Singh, Make Me Salon\n📸 @make.me.salon`;
 
-  const waPhone = rawPhone.length === 10 ? '91' + rawPhone : rawPhone; // add India code if a 10-digit local number was entered
+  const waPhone = rawPhone.length === 10 ? '8957460520' + rawPhone : rawPhone; // add India code if a 10-digit local number was entered
   const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`;
 
   // Show a small inline notification with a one-tap WhatsApp link
