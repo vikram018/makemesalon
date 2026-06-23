@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Make Me Salon – Raebareli | By Jaya Singh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --marigold:#E8872B;
+  --marigold-light:#F5C27A;
+  --marigold-pale:#FDF3E3;
+  --rose:#C2185B;
+  --rose-light:#F8BBD9;
+  --rose-pale:#FDE8F2;
+  --deep:#1A0A0E;
+  --warm:#4A2C35;
+  --muted:#8B6E76;
+  --soft:#E8DDD5;
+  --cream:#FAF6F2;
+  --white:#FFFFFF;
+  --border:rgba(74,44,53,0.12);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden}
+
+/* ═══ PAGES ═══════════════════════════════════ */
+.page{display:none;animation:fadeIn 0.45s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ NAV ══════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 6%;
+  background:rgba(250,246,242,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s,box-shadow .3s;
+}
+.nav-scrolled{padding:.7rem 6% !important;box-shadow:0 2px 24px rgba(26,10,14,.07)}
+
+.logo{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:'Playfair Display',serif;
+  font-size:1.45rem;font-weight:700;
+  color:var(--deep);text-decoration:none;
+  cursor:pointer;
+}
+.logo-dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--marigold);
+  flex-shrink:0;
+}
+.logo span{color:var(--rose)}
+
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a,.nav-links button{
+  font-size:.82rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);
+  text-decoration:none;background:none;border:none;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:color .2s;padding:0;
+}
+.nav-links a:hover,.nav-links button:hover{color:var(--rose)}
+.nav-links .active-link{color:var(--rose)}
+.nav-book{
+  background:var(--rose)!important;color:var(--white)!important;
+  padding:.5rem 1.4rem;border-radius:2px;
+  transition:background .25s!important;
+}
+.nav-book:hover{background:#9C1449!important}
+
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  cursor:pointer;background:none;border:none;padding:4px;
+}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--deep);transition:.3s}
+
+.mob-menu{
+  display:none;position:fixed;inset:0;
+  background:var(--cream);z-index:1100;
+  flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+}
+.mob-menu.open{display:flex}
+.mob-menu a,.mob-menu button{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:400;font-style:italic;
+  color:var(--deep);text-decoration:none;
+  background:none;border:none;cursor:pointer;
+  font-size:1.9rem;
+  transition:color .2s;
+}
+.mob-menu a:hover,.mob-menu button:hover{color:var(--rose)}
+.mob-close{
+  position:absolute;top:1.5rem;right:6%;
+  font-size:1.8rem;background:none;border:none;
+  cursor:pointer;color:var(--muted);
+}
+
+/* ═══ HERO ═════════════════════════════════════ */
+.hero{
+  min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;
+  padding-top:72px;overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 5% 5rem 8%;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.72rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:1.4rem;
+}
+.eyebrow-line{width:32px;height:1px;background:var(--marigold)}
+
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.6rem,4.5vw,5rem);
+  font-weight:700;line-height:1.07;
+  color:var(--deep);margin-bottom:1.6rem;
+}
+.hero-title em{font-style:italic;color:var(--rose)}
+
+.hero-desc{
+  font-size:.97rem;font-weight:300;
+  color:var(--muted);line-height:1.8;
+  max-width:40ch;margin-bottom:2.5rem;
+}
+
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-fill{
+  display:inline-block;
+  background:var(--rose);color:var(--white);
+  padding:.85rem 2rem;font-size:.8rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;border:none;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:background .25s,transform .2s;
+}
+.btn-fill:hover{background:#9C1449;transform:translateY(-2px)}
+.btn-fill:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{
+  display:inline-block;
+  background:transparent;color:var(--deep);
+  padding:.85rem 2rem;font-size:.8rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
+  border:1.5px solid var(--soft);cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:border-color .25s,color .25s,transform .2s;
+}
+.btn-ghost:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px)}
+
+.hero-badges{
+  display:flex;gap:2rem;margin-top:3.5rem;
+  padding-top:2rem;border-top:1px solid var(--border);
+  flex-wrap:wrap;
+}
+.badge-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:var(--deep);line-height:1;
+}
+.badge-num span{color:var(--marigold)}
+.badge-label{font-size:.72rem;color:var(--muted);letter-spacing:.06em;margin-top:3px}
+
+/* Hero right – decorative panel */
+.hero-right{
+  position:relative;background:var(--marigold-pale);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-right::before{
+  content:'';position:absolute;
+  top:-80px;right:-80px;width:300px;height:300px;
+  border-radius:50%;background:rgba(232,135,43,.15);
+}
+.hero-right::after{
+  content:'';position:absolute;
+  bottom:-60px;left:-60px;width:220px;height:220px;
+  border-radius:50%;background:rgba(194,24,91,.1);
+}
+
+.hero-art-wrap{
+  position:relative;width:340px;max-width:90%;
+  aspect-ratio:3/4;border-radius:4px;overflow:hidden;
+  background:linear-gradient(160deg,#F5D8C0 0%,#E8C4A0 100%);
+  display:flex;align-items:flex-end;
+}
+.hero-art-card{
+  position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(8px);
+  border-radius:4px;padding:1.2rem;
+}
+.hero-art-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:700;color:var(--deep);
+}
+.hero-art-sub{font-size:.72rem;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+
+/* floating badge */
+.hero-float{
+  position:absolute;top:2.5rem;right:2rem;
+  width:110px;height:110px;border-radius:50%;
+  background:var(--rose);
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;
+  box-shadow:0 8px 32px rgba(194,24,91,.35);
+  color:var(--white);padding:.8rem;z-index:2;
+  animation:floatBob 3s ease-in-out infinite;
+}
+@keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-float-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;line-height:1}
+.hero-float-txt{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-top:2px}
+
+/* ═══ MARQUEE ══════════════════════════════════ */
+.marquee-bar{background:var(--deep);padding:.9rem 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:marquee 30s linear infinite}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:1rem;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(250,246,242,.55);padding-right:2rem;
+}
+.m-dot{width:5px;height:5px;border-radius:50%;background:var(--marigold);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══ SHARED SECTION STYLES ═══════════════════ */
+.section{padding:5.5rem 8%}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.7rem;font-weight:500;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--marigold);margin-bottom:.8rem;
+}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--marigold)}
+.sec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:700;line-height:1.15;color:var(--deep);margin-bottom:1rem;
+}
+.sec-title em{font-style:italic;color:var(--rose)}
+.sec-sub{font-size:.94rem;color:var(--muted);line-height:1.78;max-width:54ch;margin-bottom:3rem}
+
+/* ═══ SERVICES PAGE ════════════════════════════ */
+.services-header{padding:7rem 8% 3rem;background:var(--cream)}
+.services-intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:0}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2px;background:var(--soft);
+}
+.srv-card{
+  background:var(--white);padding:2.5rem 2rem;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.srv-card::after{
+  content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--marigold),var(--rose));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.srv-card:hover{background:var(--cream)}
+.srv-card:hover::after{transform:scaleX(1)}
+.srv-icon{
+  font-size:2rem;margin-bottom:1.4rem;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--marigold-pale);
+  display:flex;align-items:center;justify-content:center;
+}
+.srv-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:700;color:var(--deep);margin-bottom:.7rem;
+}
+.srv-desc{font-size:.84rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.srv-list{list-style:none}
+.srv-list li{
+  font-size:.81rem;color:var(--muted);padding:.3rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.6rem;
+}
+.srv-list li::before{content:'';width:6px;height:1px;background:var(--marigold);flex-shrink:0}
+
+/* ═══ PRICE SECTION ════════════════════════════ */
+.price-section{background:var(--deep);padding:5.5rem 8%;color:var(--cream)}
+.price-section .sec-tag{color:var(--marigold-light)}
+.price-section .sec-title{color:var(--white)}
+.price-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.5rem;margin-top:1rem;
+}
+.price-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  border-radius:4px;padding:1.8rem;
+  transition:background .3s,border-color .3s;
+}
+.price-card:hover{background:rgba(255,255,255,.1);border-color:rgba(232,135,43,.35)}
+.price-cat{
+  font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--marigold-light);margin-bottom:1.2rem;
+}
+.price-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:.86rem;color:rgba(250,246,242,.75);
+}
+.price-item:last-child{border-bottom:none}
+.price-amt{font-weight:500;color:var(--marigold-light)}
+
+/* ═══ ABOUT PAGE ═══════════════════════════════ */
+.about-hero{
+  padding:7rem 8% 0;
+  background:linear-gradient(135deg,var(--marigold-pale) 0%,var(--rose-pale) 100%);
+}
+.about-top{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+  padding-bottom:5rem;
+}
+.about-art{
+  position:relative;
+  width:100%;aspect-ratio:4/5;border-radius:4px;overflow:hidden;
+}
+.about-img-bg{
+  width:100%;height:100%;
+  background:linear-gradient(150deg,#E8C4A0,#D4986A);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+
+.about-values{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;
+}
+.val-box{
+  padding:1.2rem;border-radius:3px;
+  background:var(--white);border-left:3px solid var(--marigold);
+}
+.val-title{font-size:.82rem;font-weight:600;color:var(--deep);margin-bottom:.25rem}
+.val-text{font-size:.77rem;color:var(--muted);line-height:1.5}
+
+/* Story section */
+.about-story{padding:5rem 8%;background:var(--white)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:6px;top:0;bottom:0;
+  width:1px;background:var(--soft);
+}
+.tl-item{position:relative;padding-bottom:2rem}
+.tl-dot{
+  position:absolute;left:-2rem;top:4px;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--marigold);border:3px solid var(--white);
+  box-shadow:0 0 0 2px var(--marigold);
+}
+.tl-year{font-size:.7rem;font-weight:600;letter-spacing:.1em;color:var(--marigold);margin-bottom:.3rem}
+.tl-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--deep);margin-bottom:.3rem}
+.tl-text{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+/* ═══ FOUNDER PAGE ═════════════════════════════ */
+.founder-hero{
+  padding:8rem 8% 5rem;
+  background:linear-gradient(135deg,var(--deep) 0%,var(--warm) 100%);
+  color:var(--white);
+  display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:center;
+}
+.founder-portrait{
+  position:relative;
+  width:100%;max-width:380px;
+  aspect-ratio:3/4;border-radius:8px;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.45);
+  display:flex;align-items:flex-end;
+}
+.founder-portrait::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,transparent 55%,rgba(10,5,15,.82));
+  pointer-events:none;
+}
+.founder-portrait img{position:absolute;inset:0}
+.founder-name-overlay{position:relative;z-index:2;}
+.founder-name-overlay{
+  position:relative;z-index:2;padding:1.5rem;width:100%;
+}
+.founder-name-big{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:700;color:var(--white);
+}
+.founder-title-small{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold-light);margin-top:4px}
+
+.founder-info .sec-tag{color:var(--marigold-light)}
+.founder-info .sec-title{color:var(--white)}
+.founder-bio{font-size:.96rem;color:rgba(250,246,242,.75);line-height:1.85;margin-bottom:2rem}
+
+.founder-quote{
+  border-left:3px solid var(--marigold);
+  padding-left:1.5rem;margin:2rem 0;
+}
+.founder-quote p{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-style:italic;font-weight:400;
+  color:rgba(250,246,242,.9);line-height:1.55;
+}
+
+.founder-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.f-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--marigold-light)}
+.f-stat-label{font-size:.7rem;letter-spacing:.08em;color:rgba(250,246,242,.55)}
+
+/* founder journey */
+.founder-journey{padding:5.5rem 8%;background:var(--cream)}
+.journey-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1rem}
+.journey-card{
+  padding:2rem;border-radius:4px;background:var(--white);
+  border-top:3px solid var(--marigold);
+  transition:transform .25s,box-shadow .25s;
+}
+.journey-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,10,14,.08)}
+.journey-icon{font-size:1.8rem;margin-bottom:1rem}
+.journey-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--deep);margin-bottom:.5rem}
+.journey-text{font-size:.82rem;color:var(--muted);line-height:1.65}
+
+/* founder message */
+.founder-message{
+  padding:5.5rem 8%;
+  background:var(--rose);color:var(--white);
+}
+.msg-inner{
+  max-width:800px;margin:0 auto;text-align:center;
+}
+.msg-inner .sec-tag{color:var(--marigold-light);justify-content:center}
+.msg-inner .sec-tag::before{background:var(--marigold-light)}
+.big-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,3vw,2.4rem);font-style:italic;
+  font-weight:400;line-height:1.5;color:var(--white);
+  margin:1.5rem 0;
+}
+.msg-sig{font-size:.9rem;color:rgba(255,255,255,.75);margin-top:1rem}
+.msg-sig strong{display:block;font-size:1rem;color:var(--white);font-weight:500}
+
+/* ═══ GALLERY ══════════════════════════════════ */
+.gallery-page{padding:7rem 8% 5.5rem}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:repeat(2,260px);
+  gap:10px;
+}
+.g-item{border-radius:3px;overflow:hidden;position:relative;cursor:pointer}
+.g-item:nth-child(1){grid-row:span 2}
+.g-bg{width:100%;height:100%;transition:transform .5s ease}
+.g-item:hover .g-bg{transform:scale(1.05)}
+.g-overlay{
+  position:absolute;inset:0;
+  background:rgba(26,10,14,0);
+  display:flex;align-items:flex-end;padding:1rem;
+  transition:background .35s;
+}
+.g-item:hover .g-overlay{background:rgba(26,10,14,.5)}
+.g-label{
+  font-size:.75rem;font-weight:500;color:var(--white);
+  letter-spacing:.1em;text-transform:uppercase;
+  opacity:0;transform:translateY(6px);transition:.3s;
+}
+.g-item:hover .g-label{opacity:1;transform:translateY(0)}
+
+/* ═══ TESTIMONIALS ═════════════════════════════ */
+.testi-section{padding:5.5rem 8%;background:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem}
+.testi-card{
+  background:var(--cream);border-radius:4px;padding:2rem;
+  position:relative;
+  border-bottom:3px solid transparent;
+  transition:border-color .3s;
+}
+.testi-card:hover{border-bottom-color:var(--marigold)}
+.testi-card::before{
+  content:'\201C';
+  font-family:'Playfair Display',serif;
+  font-size:5rem;line-height:1;
+  color:var(--marigold-light);
+  position:absolute;top:.5rem;left:1.5rem;
+}
+.t-text{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-style:italic;font-weight:400;
+  color:var(--deep);line-height:1.65;
+  margin-top:2rem;margin-bottom:1.5rem;
+}
+.t-author{display:flex;align-items:center;gap:.75rem}
+.t-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--rose);display:flex;align-items:center;
+  justify-content:center;font-weight:600;font-size:.85rem;color:var(--white);
+  flex-shrink:0;
+}
+.t-name{font-size:.88rem;font-weight:600;color:var(--deep)}
+.t-role{font-size:.74rem;color:var(--muted)}
+.stars{color:var(--marigold);font-size:.72rem;letter-spacing:2px;margin-bottom:.3rem}
+
+/* ═══ CONTACT / BOOKING ═══════════════════════ */
+.contact-page{padding:7rem 8% 5.5rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+
+.map-placeholder{
+  width:100%;aspect-ratio:4/3;border-radius:4px;overflow:hidden;
+  background:var(--soft);position:relative;
+  display:flex;align-items:center;justify-content:center;
+  margin-top:1.5rem;
+}
+.map-placeholder iframe{width:100%;height:100%;border:none}
+
+.info-block{background:var(--deep);color:var(--cream);padding:1.8rem;border-radius:4px;margin-top:1.5rem}
+.info-row{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.86rem;padding:.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  color:rgba(250,246,242,.75);
+}
+.info-row:last-child{border:none}
+.info-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-light)}
+
+/* booking form */
+.booking-form{background:var(--white);padding:2.5rem;border-radius:4px}
+.form-title{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--deep);margin-bottom:.4rem}
+.form-sub{font-size:.84rem;color:var(--muted);margin-bottom:2rem}
+.f-group{margin-bottom:1.1rem}
+.f-group label{display:block;font-size:.72rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.f-group input,.f-group select,.f-group textarea{
+  width:100%;padding:.82rem 1rem;
+  border:1.5px solid var(--soft);border-radius:2px;
+  background:var(--cream);color:var(--deep);
+  font-family:'DM Sans',sans-serif;font-size:.9rem;
+  outline:none;transition:border-color .25s;
+}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--rose)}
+.f-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%238B6E76' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.f-group textarea{resize:vertical;min-height:95px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-submit{
+  width:100%;padding:.95rem;margin-top:.5rem;
+  background:var(--rose);color:var(--white);border:none;
+  border-radius:2px;font-family:'DM Sans',sans-serif;
+  font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:background .25s,transform .2s;
+}
+.btn-submit:hover{background:#9C1449;transform:translateY(-2px)}
+.btn-submit:disabled{opacity:.55;cursor:not-allowed;transform:none}
+
+/* ── TIME SLOT PICKER ───────────────────── */
+.slot-status{
+  font-size:.78rem;margin-top:.5rem;min-height:1.2em;
+  display:flex;align-items:center;gap:.4rem;
+}
+.slot-status.checking{color:var(--muted)}
+.slot-status.ok{color:#2E7D32}
+.slot-status.taken{color:var(--rose);font-weight:600}
+.slot-status.pick-date{color:var(--muted)}
+
+.slot-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(78px,1fr));
+  gap:.55rem;margin-top:.6rem;
+}
+.slot-btn{
+  padding:.6rem .4rem;border-radius:3px;
+  border:1.5px solid var(--soft);background:var(--cream);
+  font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:500;
+  color:var(--deep);cursor:pointer;text-align:center;
+  transition:border-color .2s,background .2s,color .2s;
+}
+.slot-btn:hover:not(:disabled){border-color:var(--rose);color:var(--rose)}
+.slot-btn.selected{background:var(--rose);border-color:var(--rose);color:var(--white)}
+.slot-btn:disabled{
+  background:var(--soft);color:rgba(74,44,53,.35);
+  border-color:var(--soft);cursor:not-allowed;
+  text-decoration:line-through;
+}
+.slot-legend{
+  display:flex;gap:1.2rem;margin-top:.7rem;font-size:.72rem;color:var(--muted);flex-wrap:wrap;
+}
+.slot-legend span{display:inline-flex;align-items:center;gap:.4rem}
+.legend-swatch{width:12px;height:12px;border-radius:2px;display:inline-block}
+.legend-swatch.av{background:var(--cream);border:1.5px solid var(--soft)}
+.legend-swatch.sel{background:var(--rose)}
+.legend-swatch.bk{background:var(--soft);text-decoration:line-through}
+
+/* ═══ FOOTER ═══════════════════════════════════ */
+footer{background:var(--deep);color:var(--cream);padding:4rem 8% 2rem}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:3rem;padding-bottom:3rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.footer-brand-logo{
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;
+  color:var(--white);display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;
+}
+.footer-brand-logo span{color:var(--marigold)}
+.footer-desc{font-size:.85rem;color:rgba(250,246,242,.5);line-height:1.75;max-width:30ch}
+.footer-social{display:flex;gap:.7rem;margin-top:1.5rem}
+.soc-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.07);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;color:rgba(250,246,242,.55);
+  font-size:.75rem;font-weight:700;
+  transition:background .25s,color .25s;
+}
+.soc-btn:hover{background:var(--marigold);color:var(--deep)}
+.footer-col h4{
+  font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--marigold-light);margin-bottom:1.2rem;
+}
+.footer-col ul{list-style:none}
+.footer-col li{font-size:.84rem;color:rgba(250,246,242,.5);margin-bottom:.65rem;transition:color .2s;cursor:default}
+.footer-col li:hover{color:var(--cream)}
+.footer-col a{text-decoration:none;color:inherit}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:2rem;font-size:.76rem;
+  color:rgba(250,246,242,.3);flex-wrap:wrap;gap:.8rem;
+}
+.footer-bottom a{color:inherit;text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:var(--marigold)}
+
+/* ═══ MANDALA DECO ═════════════════════════════ */
+.mandala{
+  position:absolute;opacity:.06;pointer-events:none;
+}
+
+/* ═══ REVEAL ═══════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ═══ RESPONSIVE ═══════════════════════════════ */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:5rem 6% 4rem}
+  .about-top,.story-grid,.founder-hero{grid-template-columns:1fr}
+  .founder-portrait{max-width:280px;margin:0 auto}
+  .founder-hero{padding:7rem 6% 4rem}
+  .services-intro{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
+  .g-item:nth-child(1){grid-row:span 1}
+}
+@media(max-width:640px){
+  .section,.services-header,.gallery-page,.contact-page,.founder-journey,.founder-message,.testi-section,.about-story,.price-section{padding:4rem 5%}
+  .founder-hero,.about-hero,.about-top{padding:6rem 5% 3rem}
+  .hero-left{padding:4.5rem 5% 3.5rem}
+  nav{padding:.85rem 5%}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-badges{gap:1.5rem}
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:repeat(5,200px)}
+  .about-values{grid-template-columns:1fr}
+  .f-row{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .founder-stats{gap:1.5rem}
+  .slot-grid{grid-template-columns:repeat(auto-fill,minmax(68px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ══════════════════════════════════════════ -->
+<nav id="mainNav">
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-dot"></div>
+    Make<span>Me</span>&nbsp;Salon
+  </div>
+  <ul class="nav-links">
+    <li><button onclick="showPage('home')" id="nav-home" class="active-link">Home</button></li>
+    <li><button onclick="showPage('services')" id="nav-services">Services</button></li>
+    <li><button onclick="showPage('about')" id="nav-about">About</button></li>
+    <li><button onclick="showPage('founder')" id="nav-founder">Our Founder</button></li>
+    <li><button onclick="showPage('gallery')" id="nav-gallery">Gallery</button></li>
+    <li><button onclick="showPage('contact')" class="nav-book" id="nav-contact">Book Now</button></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMob()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="toggleMob()">✕</button>
+  <button onclick="showPage('home');toggleMob()">Home</button>
+  <button onclick="showPage('services');toggleMob()">Services</button>
+  <button onclick="showPage('about');toggleMob()">About</button>
+  <button onclick="showPage('founder');toggleMob()">Our Founder</button>
+  <button onclick="showPage('gallery');toggleMob()">Gallery</button>
+  <button onclick="showPage('contact');toggleMob()">Book Now</button>
+</div>
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: HOME                                               ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Raebareli's Premier Beauty Salon
+      </div>
+      <h1 class="hero-title">
+        Your Beauty,<br/>Our <em>Artistry</em>,<br/>One Destination
+      </h1>
+      <p class="hero-desc">
+        Step into Make Me Salon — where traditional Indian beauty rituals blend with modern techniques to give you a truly transformative experience.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-fill" onclick="showPage('contact')">Book Appointment</button>
+        <button class="btn-ghost" onclick="showPage('services')">Explore Services</button>
+      </div>
+      <div class="hero-badges">
+        <div>
+          <div class="badge-num">500<span>+</span></div>
+          <div class="badge-label">Happy Clients</div>
+        </div>
+        <div>
+          <div class="badge-num">5<span>★</span></div>
+          <div class="badge-label">Rated Experience</div>
+        </div>
+        <div>
+          <div class="badge-num">10<span>+</span></div>
+          <div class="badge-label">Expert Services</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- Floating badge -->
+      <div class="hero-float">
+        <div class="hero-float-num">₹₹</div>
+        <div class="hero-float-txt">Affordable Luxury</div>
+      </div>
+
+      <!-- Portrait art -->
+      <div class="hero-art-wrap">
+        <svg viewBox="0 0 340 450" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:100%;height:100%;top:0;left:0">
+          <rect width="340" height="450" fill="url(#heroGrad)"/>
+          <defs>
+            <linearGradient id="heroGrad" x1="0" y1="0" x2="340" y2="450" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#F5D8B8"/>
+              <stop offset="100%" stop-color="#E8B080"/>
+            </linearGradient>
+          </defs>
+          <circle cx="170" cy="118" r="5" fill="#C2185B" opacity=".8"/>
+          <ellipse cx="170" cy="130" rx="78" ry="85" fill="#2C1505"/>
+          <path d="M92 115 Q78 230 102 370 Q128 410 170 415 Q212 410 238 370 Q262 230 248 115" fill="#2C1505"/>
+          <ellipse cx="170" cy="60" rx="36" ry="28" fill="#3D1F08"/>
+          <ellipse cx="170" cy="185" rx="68" ry="78" fill="#D4956A"/>
+          <rect x="148" y="255" width="44" height="50" rx="10" fill="#D4956A"/>
+          <path d="M95 330 Q130 290 170 295 Q210 290 245 330 Q265 380 245 420 Q210 440 170 442 Q130 440 95 420 Q75 380 95 330Z" fill="#C2185B" opacity=".7"/>
+          <path d="M95 330 Q100 310 105 330" stroke="#E8872B" stroke-width="1.5" fill="none" opacity=".5"/>
+          <ellipse cx="147" cy="178" rx="10" ry="8" fill="#2C1505"/>
+          <ellipse cx="193" cy="178" rx="10" ry="8" fill="#2C1505"/>
+          <ellipse cx="149" cy="175" rx="3" ry="3" fill="white" opacity=".4"/>
+          <path d="M134 178 Q147 185 160 178" stroke="#2C1505" stroke-width="1.5" fill="none" opacity=".6"/>
+          <path d="M180 178 Q193 185 206 178" stroke="#2C1505" stroke-width="1.5" fill="none" opacity=".6"/>
+          <path d="M133 164 Q147 157 161 162" stroke="#2C1505" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M179 162 Q193 157 207 164" stroke="#2C1505" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <circle cx="181" cy="205" r="4" fill="none" stroke="#E8872B" stroke-width="1.5" opacity=".7"/>
+          <path d="M152 222 Q162 215 170 217 Q178 215 188 222 Q180 234 170 235 Q160 234 152 222Z" fill="#C2185B"/>
+          <circle cx="100" cy="190" r="6" fill="#E8872B"/>
+          <ellipse cx="100" cy="202" rx="4" ry="8" fill="#E8872B" opacity=".8"/>
+          <circle cx="240" cy="190" r="6" fill="#E8872B"/>
+          <ellipse cx="240" cy="202" rx="4" ry="8" fill="#E8872B" opacity=".8"/>
+          <ellipse cx="127" cy="205" rx="16" ry="9" fill="#E8967A" opacity=".2"/>
+          <ellipse cx="213" cy="205" rx="16" ry="9" fill="#E8967A" opacity=".2"/>
+          <path d="M130 262 Q170 278 210 262" stroke="#E8872B" stroke-width="2" fill="none" opacity=".7"/>
+          <circle cx="170" cy="278" r="5" fill="#E8872B" opacity=".8"/>
+          <text x="30" y="70" font-size="18" fill="#E8872B" opacity=".25">✦</text>
+          <text x="295" y="380" font-size="14" fill="#C2185B" opacity=".2">✦</text>
+          <text x="50" y="380" font-size="12" fill="#E8872B" opacity=".2">✦</text>
+        </svg>
+        <div class="hero-art-card">
+          <div class="hero-art-title">Make Me Salon</div>
+          <div class="hero-art-sub">✦ Founded by Jaya Singh · Raebareli</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item"><span class="m-dot"></span>Hair Styling</span>
+      <span class="marquee-item"><span class="m-dot"></span>Mehendi</span>
+      <span class="marquee-item"><span class="m-dot"></span>Bridal Makeup</span>
+      <span class="marquee-item"><span class="m-dot"></span>Facials</span>
+      <span class="marquee-item"><span class="m-dot"></span>Nail Art</span>
+      <span class="marquee-item"><span class="m-dot"></span>Threading</span>
+      <span class="marquee-item"><span class="m-dot"></span>Waxing</span>
+      <span class="marquee-item"><span class="m-dot"></span>Hair Colour</span>
+      <span class="marquee-item"><span class="m-dot"></span>Manicure &amp; Pedicure</span>
+      <span class="marquee-item"><span class="m-dot"></span>Hair Spa</span>
+      <span class="marquee-item"><span class="m-dot"></span>Hair Styling</span>
+      <span class="marquee-item"><span class="m-dot"></span>Mehendi</span>
+      <span class="marquee-item"><span class="m-dot"></span>Bridal Makeup</span>
+      <span class="marquee-item"><span class="m-dot"></span>Facials</span>
+      <span class="marquee-item"><span class="m-dot"></span>Nail Art</span>
+      <span class="marquee-item"><span class="m-dot"></span>Threading</span>
+      <span class="marquee-item"><span class="m-dot"></span>Waxing</span>
+      <span class="marquee-item"><span class="m-dot"></span>Hair Colour</span>
+      <span class="marquee-item"><span class="m-dot"></span>Manicure &amp; Pedicure</span>
+      <span class="marquee-item"><span class="m-dot"></span>Hair Spa</span>
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" style="background:var(--white)">
+    <p class="sec-tag reveal">Why Choose Us</p>
+    <h2 class="sec-title reveal d1">The Make Me <em>Promise</em></h2>
+    <p class="sec-sub reveal d2">We combine the warmth of Indian beauty traditions with contemporary techniques — creating an experience that is personal, professional, and truly memorable.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.5rem">
+      <div class="val-box reveal" style="border-left-color:var(--marigold)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">💆‍♀️</div>
+        <div class="val-title">Expert Professionals</div>
+        <div class="val-text">Trained, experienced beauticians who listen and deliver exactly what you envision.</div>
+      </div>
+      <div class="val-box reveal d1" style="border-left-color:var(--rose)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">✨</div>
+        <div class="val-title">Premium Products</div>
+        <div class="val-text">Only top-quality, skin-safe products — from trusted Indian and international brands.</div>
+      </div>
+      <div class="val-box reveal d2" style="border-left-color:var(--marigold)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">🕯️</div>
+        <div class="val-title">Relaxing Ambience</div>
+        <div class="val-text">A calm, welcoming environment where you can truly unwind and be pampered.</div>
+      </div>
+      <div class="val-box reveal d3" style="border-left-color:var(--rose)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">💎</div>
+        <div class="val-title">Affordable Luxury</div>
+        <div class="val-text">Premium salon experience at prices that respect your budget — no compromise on quality.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK SERVICES PREVIEW -->
+  <section class="section" style="background:var(--cream)">
+    <p class="sec-tag reveal">Our Specialities</p>
+    <h2 class="sec-title reveal d1">Crafted for <em>Every Occasion</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem">
+      <div onclick="showPage('services')" class="srv-card reveal" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">💇‍♀️</div>
+        <div class="srv-name" style="font-size:1rem">Hair Care</div>
+      </div>
+      <div onclick="showPage('services')" class="srv-card reveal d1" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">💄</div>
+        <div class="srv-name" style="font-size:1rem">Makeup</div>
+      </div>
+      <div onclick="showPage('services')" class="srv-card reveal d2" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">🌿</div>
+        <div class="srv-name" style="font-size:1rem">Skincare</div>
+      </div>
+      <div onclick="showPage('services')" class="srv-card reveal d3" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">💅</div>
+        <div class="srv-name" style="font-size:1rem">Nail Art</div>
+      </div>
+      <div onclick="showPage('services')" class="srv-card reveal d4" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">🪷</div>
+        <div class="srv-name" style="font-size:1rem">Mehendi</div>
+      </div>
+      <div onclick="showPage('services')" class="srv-card reveal" style="text-align:center;cursor:pointer;border-radius:4px">
+        <div class="srv-icon" style="margin:0 auto 1rem">👰</div>
+        <div class="srv-name" style="font-size:1rem">Bridal</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <button class="btn-fill" onclick="showPage('services')">View All Services</button>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section style="background:var(--rose);padding:4rem 8%;text-align:center">
+    <p class="sec-tag" style="color:var(--marigold-light);justify-content:center">✦ Ready for a glow-up?</p>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--white);font-weight:700;margin:.5rem 0 1.5rem">
+      Book Your Appointment Today
+    </h2>
+    <p style="color:rgba(255,255,255,.75);font-size:.95rem;margin-bottom:2rem;max-width:50ch;margin-left:auto;margin-right:auto">
+      Walk-ins welcome. Appointments preferred. Call us or fill the booking form — we'd love to meet you!
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <button class="btn-fill" onclick="showPage('contact')" style="background:var(--white);color:var(--rose)">Book Online</button>
+      <a href="tel:+91" class="btn-ghost" style="border-color:rgba(255,255,255,.5);color:var(--white)">Call Now</a>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS PREVIEW -->
+  <div class="testi-section">
+    <p class="sec-tag reveal">Client Love</p>
+    <h2 class="sec-title reveal d1">What Our <em>Clients Say</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"The bridal makeup Jaya ji did for my sister's wedding was absolutely stunning. Everyone was asking who the makeup artist was. Make Me Salon is truly the best in Raebareli!"</p>
+        <div class="t-author">
+          <div class="t-avatar">PS</div>
+          <div><div class="t-name">Priya Srivastava</div><div class="t-role">Bride's Sister · Nirala Nagar</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal d1">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"I come here every month for my facial and hair treatment. The products are good quality and the staff is so warm and professional. Feels like a luxury experience at a reasonable price!"</p>
+        <div class="t-author">
+          <div class="t-avatar">RM</div>
+          <div><div class="t-name">Ruchi Mishra</div><div class="t-role">Regular Client · Raebareli</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal d2">
+        <div class="stars">★★★★★</div>
+        <p class="t-text">"Got my mehendi done here before my cousin's shaadi. The designs were so detailed and beautiful! Jaya madam herself is very skilled and the atmosphere of the salon is very pleasant."</p>
+        <div class="t-author">
+          <div class="t-avatar">AG</div>
+          <div><div class="t-name">Anjali Gupta</div><div class="t-role">Happy Client · Satya Nagar</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- END HOME PAGE -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: SERVICES                                           ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page" id="page-services">
+  <div class="services-header">
+    <p class="sec-tag">Our Services</p>
+    <div class="services-intro">
+      <div>
+        <h1 class="sec-title" style="margin-bottom:0">Everything Your <em>Beauty Deserves</em></h1>
+      </div>
+      <div>
+        <p class="sec-sub" style="margin-bottom:0">From everyday grooming to full bridal packages — Make Me Salon offers a complete range of professional beauty services tailored for every occasion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="services-grid">
+    <div class="srv-card">
+      <div class="srv-icon">💇‍♀️</div>
+      <div class="srv-name">Hair Services</div>
+      <p class="srv-desc">Expert haircare with premium products suited to all hair types — straight, wavy, and curly.</p>
+      <ul class="srv-list">
+        <li>Haircut &amp; Trim (all lengths)</li>
+        <li>Blow Dry &amp; Hair Setting</li>
+        <li>Smoothening &amp; Rebonding</li>
+        <li>Keratin Treatment</li>
+        <li>Hair Colour &amp; Highlights</li>
+        <li>Balayage &amp; Ombre</li>
+        <li>Hair Spa &amp; Deep Conditioning</li>
+        <li>Dandruff Treatment</li>
+      </ul>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">💄</div>
+      <div class="srv-name">Makeup &amp; Styling</div>
+      <p class="srv-desc">From subtle day looks to full party glam — our artists understand Indian skin tones beautifully.</p>
+      <ul class="srv-list">
+        <li>Party Makeup</li>
+        <li>Engagement Makeup</li>
+        <li>Bridal Makeup (Dulhan)</li>
+        <li>Airbrush Makeup</li>
+        <li>Eye Makeup Artistry</li>
+        <li>HD Makeup</li>
+        <li>Traditional / Saree Draping Look</li>
+        <li>Reception Makeup</li>
+      </ul>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🌿</div>
+      <div class="srv-name">Skincare &amp; Facials</div>
+      <p class="srv-desc">Nourish and revive your skin with our range of luxurious, results-driven facial treatments.</p>
+      <ul class="srv-list">
+        <li>Clean-up &amp; Basic Facial</li>
+        <li>Whitening &amp; Brightening Facial</li>
+        <li>Anti-Aging Facial</li>
+        <li>Gold / Pearl Facial</li>
+        <li>De-tan Treatment</li>
+        <li>Bleach (Face &amp; Full Body)</li>
+        <li>Fruit Facial</li>
+        <li>Oxygen Facial</li>
+      </ul>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">💅</div>
+      <div class="srv-name">Nail Studio</div>
+      <p class="srv-desc">Beautifully finished nails that complement your style for every occasion and season.</p>
+      <ul class="srv-list">
+        <li>Manicure (Regular &amp; Spa)</li>
+        <li>Pedicure (Regular &amp; Spa)</li>
+        <li>Gel Nail Polish</li>
+        <li>Acrylic Nail Extensions</li>
+        <li>Nail Art &amp; Designs</li>
+        <li>French Tip Manicure</li>
+        <li>Foot Care &amp; Callus Treatment</li>
+        <li>Cuticle Care</li>
+      </ul>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🪷</div>
+      <div class="srv-name">Mehendi &amp; Bridal</div>
+      <p class="srv-desc">Traditional art forms and complete bridal packages for your most cherished day.</p>
+      <ul class="srv-list">
+        <li>Bridal Mehendi (Full Hand &amp; Feet)</li>
+        <li>Party / Simple Mehendi</li>
+        <li>Arabic Mehendi Designs</li>
+        <li>Full Bridal Package (Hair + Makeup + Mehendi)</li>
+        <li>Pre-Bridal Skin Package</li>
+        <li>Groom Grooming Package</li>
+        <li>Bridesmaids Packages</li>
+        <li>Maternity / Baby Shower Glam</li>
+      </ul>
+    </div>
+    <div class="srv-card">
+      <div class="srv-icon">🧖‍♀️</div>
+      <div class="srv-name">Body &amp; Waxing</div>
+      <p class="srv-desc">Smooth, clean, and comfortable hair removal and body care treatments by expert hands.</p>
+      <ul class="srv-list">
+        <li>Threading (Eyebrow, Upper Lip, Full Face)</li>
+        <li>Waxing (Arms, Legs, Full Body)</li>
+        <li>Rica Wax (Sensitive Skin)</li>
+        <li>Body Polishing &amp; Scrub</li>
+        <li>Underarm Lightening</li>
+        <li>Back Facial</li>
+        <li>Head Massage &amp; Champi</li>
+        <li>Ear Piercing</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PRICE SECTION -->
+  <div class="price-section">
+    <p class="sec-tag">Price Guide</p>
+    <h2 class="sec-title">Transparent <em>Pricing</em></h2>
+    <p class="sec-sub" style="color:rgba(250,246,242,.6)">Affordable quality for every service. Prices may vary based on hair length and specific requirements.</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-cat">✂ Hair Services</div>
+        <div class="price-item"><span>Haircut</span><span class="price-amt">₹100 – 300</span></div>
+        <div class="price-item"><span>Blow Dry</span><span class="price-amt">₹150 – 350</span></div>
+        <div class="price-item"><span>Hair Colour</span><span class="price-amt">₹600 – 1,500</span></div>
+        <div class="price-item"><span>Smoothening</span><span class="price-amt">₹2,000 – 5,000</span></div>
+        <div class="price-item"><span>Hair Spa</span><span class="price-amt">₹400 – 800</span></div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">💄 Makeup</div>
+        <div class="price-item"><span>Party Makeup</span><span class="price-amt">₹800 – 2,000</span></div>
+        <div class="price-item"><span>Engagement Makeup</span><span class="price-amt">₹2,000 – 4,000</span></div>
+        <div class="price-item"><span>Bridal Makeup</span><span class="price-amt">₹5,000 – 15,000</span></div>
+        <div class="price-item"><span>Airbrush Makeup</span><span class="price-amt">₹3,000 – 8,000</span></div>
+        <div class="price-item"><span>Eye Makeup</span><span class="price-amt">₹300 – 600</span></div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">🌿 Skincare</div>
+        <div class="price-item"><span>Basic Clean-up</span><span class="price-amt">₹200 – 400</span></div>
+        <div class="price-item"><span>Fruit Facial</span><span class="price-amt">₹400 – 700</span></div>
+        <div class="price-item"><span>Gold Facial</span><span class="price-amt">₹700 – 1,200</span></div>
+        <div class="price-item"><span>De-tan Treatment</span><span class="price-amt">₹300 – 600</span></div>
+        <div class="price-item"><span>Bleach</span><span class="price-amt">₹150 – 400</span></div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">💅 Nails &amp; Body</div>
+        <div class="price-item"><span>Manicure</span><span class="price-amt">₹200 – 500</span></div>
+        <div class="price-item"><span>Pedicure</span><span class="price-amt">₹250 – 600</span></div>
+        <div class="price-item"><span>Nail Art</span><span class="price-amt">₹50 – 200/nail</span></div>
+        <div class="price-item"><span>Full Body Waxing</span><span class="price-amt">₹500 – 1,000</span></div>
+        <div class="price-item"><span>Mehendi (Bridal)</span><span class="price-amt">₹1,500 – 5,000</span></div>
+      </div>
+    </div>
+    <p style="font-size:.76rem;color:rgba(250,246,242,.35);margin-top:1.5rem">* Prices are indicative. Final pricing depends on hair length, service customisation, and product used. Contact us for exact quotes.</p>
+  </div>
+
+  <!-- CTA -->
+  <section style="background:var(--cream);padding:5rem 8%;text-align:center">
+    <p class="sec-tag" style="justify-content:center">Book a Service</p>
+    <h2 class="sec-title" style="max-width:500px;margin:0 auto 1rem">Ready to be <em>Pampered?</em></h2>
+    <p class="sec-sub" style="margin:0 auto 2rem">Walk in any day or call ahead to secure your slot. We can't wait to serve you!</p>
+    <button class="btn-fill" onclick="showPage('contact')">Book Your Appointment</button>
+  </section>
+</div><!-- END SERVICES PAGE -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: ABOUT                                              ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page" id="page-about">
+  <div class="about-hero" style="padding-bottom:5rem">
+    <div class="about-top">
+      <div class="about-art">
+        <div class="about-img-bg">
+          <svg viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="380" height="480" fill="url(#aboutGrad)"/>
+            <defs>
+              <linearGradient id="aboutGrad" x1="0" y1="0" x2="380" y2="480" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F0C8A0"/>
+                <stop offset="100%" stop-color="#D4956A"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="190" cy="420" rx="120" ry="18" fill="rgba(74,44,53,.15)"/>
+            <rect x="135" y="320" width="110" height="90" rx="10" fill="#8B5A3C" opacity=".4"/>
+            <rect x="120" y="305" width="140" height="25" rx="8" fill="#A07040" opacity=".5"/>
+            <rect x="150" y="408" width="30" height="22" rx="4" fill="#8B5A3C" opacity=".5"/>
+            <rect x="200" y="408" width="30" height="22" rx="4" fill="#8B5A3C" opacity=".5"/>
+            <ellipse cx="190" cy="185" rx="52" ry="62" fill="#D4956A"/>
+            <ellipse cx="190" cy="135" rx="60" ry="68" fill="#2C1505"/>
+            <path d="M130 145 Q118 240 140 330 Q162 360 190 363 Q218 360 240 330 Q262 240 250 145" fill="#2C1505"/>
+            <ellipse cx="190" cy="75" rx="32" ry="25" fill="#3D1F08"/>
+            <ellipse cx="168" cy="180" rx="9" ry="7" fill="#1C0A05"/>
+            <ellipse cx="212" cy="180" rx="9" ry="7" fill="#1C0A05"/>
+            <circle cx="190" cy="125" r="4" fill="#C2185B" opacity=".7"/>
+            <path d="M176 210 Q190 218 204 210" stroke="#C2185B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <ellipse cx="149" cy="198" rx="13" ry="8" fill="#E8967A" opacity=".2"/>
+            <ellipse cx="231" cy="198" rx="13" ry="8" fill="#E8967A" opacity=".2"/>
+            <rect x="174" y="240" width="32" height="40" rx="8" fill="#D4956A"/>
+            <path d="M125 295 Q160 265 190 268 Q220 265 255 295 L270 400 Q220 430 190 432 Q160 430 110 400Z" fill="#C2185B" opacity=".65"/>
+            <circle cx="135" cy="192" r="5" fill="#E8872B"/>
+            <ellipse cx="135" cy="202" rx="3" ry="7" fill="#E8872B" opacity=".8"/>
+            <circle cx="245" cy="192" r="5" fill="#E8872B"/>
+            <ellipse cx="245" cy="202" rx="3" ry="7" fill="#E8872B" opacity=".8"/>
+            <text x="30" y="60" font-size="20" fill="#E8872B" opacity=".2">✦</text>
+            <text x="320" y="420" font-size="16" fill="#C2185B" opacity=".2">✦</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <p class="sec-tag">About Make Me Salon</p>
+        <h1 class="sec-title">A Salon Built on<br/><em>Passion &amp; Purpose</em></h1>
+        <p class="sec-sub">Make Me Salon was born from a deep love of beauty and a desire to bring world-class salon services to the heart of Raebareli. Founded by Jaya Singh, the salon has become a trusted name for women across the city — a place where every visit feels special.</p>
+        <p class="sec-sub" style="margin-bottom:0">Located at Abhay Data Complex, Madhuban Road, Satya Nagar, Nirala Nagar — we are easily accessible and always welcoming. Whether it's your everyday grooming or once-in-a-lifetime bridal preparation, we are here for every moment of your beauty journey.</p>
+        <div class="about-values">
+          <div class="val-box"><div class="val-title">Our Mission</div><div class="val-text">To make every woman feel beautiful, confident, and celebrated — without compromise.</div></div>
+          <div class="val-box"><div class="val-title">Our Vision</div><div class="val-text">To be Raebareli's most loved and trusted beauty destination for every generation.</div></div>
+          <div class="val-box" style="border-color:var(--rose)"><div class="val-title">Our Values</div><div class="val-text">Honesty, care, skill, and genuine warmth in every single interaction.</div></div>
+          <div class="val-box" style="border-color:var(--rose)"><div class="val-title">Our Community</div><div class="val-text">Proud to serve and uplift the women of Nirala Nagar and all of Raebareli.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORY TIMELINE -->
+  <div class="about-story">
+    <p class="sec-tag">Our Journey</p>
+    <h2 class="sec-title">The Make Me <em>Story</em></h2>
+    <div class="story-grid">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">The Beginning</div>
+          <div class="tl-title">A Dream Takes Shape</div>
+          <div class="tl-text">Jaya Singh, with a passion for beauty and a drive to serve her community, opens Make Me Salon in Nirala Nagar, Raebareli — starting small but dreaming big.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Growing Roots</div>
+          <div class="tl-title">Building Trust, One Client at a Time</div>
+          <div class="tl-text">Word of mouth spreads fast in Raebareli. Known for honest service, skilled hands, and a warm atmosphere, Make Me Salon quickly becomes the go-to parlour for local women.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Expanding Services</div>
+          <div class="tl-title">Full-Service Beauty Destination</div>
+          <div class="tl-text">From basic facials and threading, the salon expands to offer hair treatments, nail art, mehendi, and complete bridal packages — all under one roof.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">Today &amp; Beyond</div>
+          <div class="tl-title">Still Growing, Still Caring</div>
+          <div class="tl-text">Today, Make Me Salon continues to evolve — bringing new techniques, better products, and the same heartfelt service that has made it Raebareli's most loved salon.</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;justify-content:center">
+        <div style="background:var(--marigold-pale);border-radius:4px;padding:2.5rem;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--marigold);line-height:1">500+</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-top:.4rem;letter-spacing:.06em">Happy Clients Served</div>
+        </div>
+        <div style="background:var(--rose-pale);border-radius:4px;padding:2.5rem;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--rose);line-height:1">10+</div>
+          <div style="font-size:.8rem;color:var(--muted);margin-top:.4rem;letter-spacing:.06em">Expert Services Offered</div>
+        </div>
+        <div style="background:var(--deep);border-radius:4px;padding:2.5rem;text-align:center">
+          <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--marigold-light);line-height:1">5★</div>
+          <div style="font-size:.8rem;color:rgba(250,246,242,.55);margin-top:.4rem;letter-spacing:.06em">Average Client Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section style="background:var(--cream);padding:5rem 8%;text-align:center">
+    <button class="btn-fill" onclick="showPage('founder')" style="margin-right:1rem">Meet Our Founder ↗</button>
+    <button class="btn-ghost" onclick="showPage('contact')">Book a Visit</button>
+  </section>
+</div><!-- END ABOUT PAGE -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: FOUNDER                                            ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page" id="page-founder">
+
+  <!-- FOUNDER HERO -->
+  <div class="founder-hero">
+    <div class="founder-portrait">
+      <img src="https://images.unsplash.com/photo-1594744803329-a3f3e6b7e6c7?w=600&q=80"
+           alt="Jaya Singh – Founder of Make Me Salon"
+           style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;position:absolute;inset:0;"
+           onerror="this.style.display='none'"/>
+      <div class="founder-name-overlay">
+        <div class="founder-name-big">Jaya Singh</div>
+        <div class="founder-title-small">Founder &amp; Head Artist</div>
+      </div>
+    </div>
+
+    <div class="founder-info">
+      <p class="sec-tag">Meet the Visionary</p>
+      <h1 class="sec-title" style="font-size:clamp(2rem,4vw,3.5rem)">The Heart Behind<br/><em>Make Me Salon</em></h1>
+      <p class="founder-bio">
+        Jaya Singh is the passionate mind and skilled hands behind Make Me Salon. Growing up with a deep fascination for beauty, artistry, and the transformative power of self-care, she always dreamed of creating a space where every woman could feel truly seen and celebrated.
+      </p>
+      <p class="founder-bio">
+        With years of professional training and hands-on experience across hair, makeup, skincare, and bridal services, Jaya established Make Me Salon in the heart of Nirala Nagar, Raebareli — bringing big-city quality beauty services to her beloved hometown.
+      </p>
+
+      <div class="founder-quote">
+        <p>"Beauty is not about perfection — it is about feeling confident in your own skin. My goal has always been to help every woman who walks through my door feel exactly that."</p>
+      </div>
+
+      <div class="founder-stats">
+        <div>
+          <div class="f-stat-num">500+</div>
+          <div class="f-stat-label">Clients Transformed</div>
+        </div>
+        <div>
+          <div class="f-stat-num">100+</div>
+          <div class="f-stat-label">Bridal Makeovers</div>
+        </div>
+        <div>
+          <div class="f-stat-num">10+</div>
+          <div class="f-stat-label">Years of Craft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOURNEY CARDS -->
+  <div class="founder-journey">
+    <p class="sec-tag">Her Journey</p>
+    <h2 class="sec-title">Passion That <em>Built a Salon</em></h2>
+    <div class="journey-grid">
+      <div class="journey-card">
+        <div class="journey-icon">🎨</div>
+        <div class="journey-title">A Love for Artistry</div>
+        <div class="journey-text">From a young age, Jaya was captivated by the art of beauty — experimenting with mehendi, trying hairstyles, and exploring the magic of a well-done makeup look. This curiosity became her calling.</div>
+      </div>
+      <div class="journey-card">
+        <div class="journey-icon">📚</div>
+        <div class="journey-title">Professional Training</div>
+        <div class="journey-text">Jaya invested in formal beauty education, mastering techniques in hair, makeup, skincare, and nail art — ensuring that every service at Make Me Salon meets the highest professional standards.</div>
+      </div>
+      <div class="journey-card">
+        <div class="journey-icon">🏠</div>
+        <div class="journey-title">Serving Her Hometown</div>
+        <div class="journey-text">Rather than moving to a big city, Jaya chose to build her dream in Raebareli — believing that women in smaller cities deserve the same quality of beauty services as anywhere else in India.</div>
+      </div>
+      <div class="journey-card">
+        <div class="journey-icon">👰</div>
+        <div class="journey-title">Bridal Specialist</div>
+        <div class="journey-text">Jaya's bridal work has become legendary in Raebareli. Her attention to detail, understanding of every bride's unique vision, and ability to bring it to life has made her the city's most trusted bridal artist.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDER MESSAGE -->
+  <div class="founder-message">
+    <div class="msg-inner">
+      <p class="sec-tag">A Message from the Founder</p>
+      <p class="big-quote">
+        "Every woman deserves to feel beautiful. When I started Make Me Salon, I had one simple wish — that every client who sits in my chair leaves feeling more confident, more joyful, and more herself than when she came in."
+      </p>
+      <p class="big-quote" style="font-size:clamp(1.1rem,2vw,1.6rem);margin-top:.5rem">
+        "Raebareli is my home, and this salon is my heart. Thank you for trusting me with your beauty."
+      </p>
+      <p class="msg-sig">With love &amp; warmth,<strong>Jaya Singh</strong>Founder, Make Me Salon · Raebareli</p>
+      <div style="margin-top:2.5rem">
+        <button class="btn-fill" onclick="showPage('contact')" style="background:var(--white);color:var(--rose)">Book with Jaya</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECIALISATIONS -->
+  <section style="background:var(--cream);padding:5.5rem 8%">
+    <p class="sec-tag">Expertise</p>
+    <h2 class="sec-title">Jaya's <em>Specialisations</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div style="padding:1.5rem;background:var(--white);border-radius:4px;border-top:3px solid var(--marigold)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">👰</div>
+        <div class="val-title">Bridal Makeup</div>
+        <div class="val-text">Traditional &amp; modern bridal looks including Hindu, Muslim &amp; Christian styles.</div>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border-radius:4px;border-top:3px solid var(--rose)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">🪷</div>
+        <div class="val-title">Mehendi Art</div>
+        <div class="val-text">Intricate bridal and party mehendi — Arabic, Rajasthani &amp; contemporary styles.</div>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border-radius:4px;border-top:3px solid var(--marigold)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">💇‍♀️</div>
+        <div class="val-title">Hair Transformation</div>
+        <div class="val-text">Colouring, smoothening, styling &amp; treatments for all Indian hair types.</div>
+      </div>
+      <div style="padding:1.5rem;background:var(--white);border-radius:4px;border-top:3px solid var(--rose)">
+        <div style="font-size:1.5rem;margin-bottom:.6rem">🌿</div>
+        <div class="val-title">Skin Expertise</div>
+        <div class="val-text">Facials, de-tan, brightening &amp; glow treatments customised for Indian skin.</div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- END FOUNDER PAGE -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: GALLERY                                            ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page" id="page-gallery">
+  <div class="gallery-page">
+    <p class="sec-tag">Our Portfolio</p>
+    <h1 class="sec-title">Beauty We <em>Create</em></h1>
+    <p class="sec-sub">Every look tells a story. Follow us on Instagram <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" style="color:var(--rose);text-decoration:none;font-weight:500">@make.me.salon</a> for more transformations.</p>
+
+    <div class="gallery-grid">
+      <div class="g-item">
+        <div class="g-bg" style="background:#D4A87A;height:100%;width:100%;position:absolute;inset:0">
+          <svg viewBox="0 0 300 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="300" height="520" fill="#D4A87A"/>
+            <ellipse cx="150" cy="170" rx="78" ry="88" fill="#1C0A05"/>
+            <path d="M72 150 Q60 260 86 400 Q110 445 150 450 Q190 445 214 400 Q240 260 228 150" fill="#1C0A05"/>
+            <ellipse cx="150" cy="220" rx="65" ry="78" fill="#C4856A"/>
+            <circle cx="150" cy="150" r="5" fill="#E8872B" opacity=".9"/>
+            <ellipse cx="128" cy="215" rx="10" ry="8" fill="#1C0A05"/>
+            <ellipse cx="172" cy="215" rx="10" ry="8" fill="#1C0A05"/>
+            <path d="M138 248 Q150 255 162 248" stroke="#C2185B" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <ellipse cx="108" cy="237" rx="14" ry="8" fill="#E8967A" opacity=".2"/>
+            <ellipse cx="192" cy="237" rx="14" ry="8" fill="#E8967A" opacity=".2"/>
+            <rect x="131" y="292" width="38" height="50" rx="10" fill="#C4856A"/>
+            <path d="M85 370 Q118 340 150 344 Q182 340 215 370 L228 500 Q190 515 150 516 Q110 515 72 500Z" fill="#C2185B" opacity=".6"/>
+            <circle cx="92" cy="224" r="5" fill="#E8872B"/><ellipse cx="92" cy="235" rx="3.5" ry="8" fill="#E8872B" opacity=".8"/>
+            <circle cx="208" cy="224" r="5" fill="#E8872B"/><ellipse cx="208" cy="235" rx="3.5" ry="8" fill="#E8872B" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="g-overlay"><span class="g-label">Bridal Dulhan Look</span></div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-bg" style="background:#C4A07A;height:100%;width:100%;position:absolute;inset:0">
+          <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="300" height="260" fill="#C4A07A"/>
+            <g transform="translate(30,30)">
+              <rect x="75" y="110" width="95" height="85" rx="18" fill="#C4856A"/>
+              <rect x="80" y="55" width="20" height="72" rx="10" fill="#C4856A"/>
+              <rect x="106" y="40" width="20" height="84" rx="10" fill="#C4856A"/>
+              <rect x="132" y="43" width="20" height="80" rx="10" fill="#C4856A"/>
+              <rect x="158" y="55" width="20" height="70" rx="10" fill="#C4856A"/>
+              <rect x="28" y="118" width="58" height="20" rx="10" fill="#C4856A"/>
+              <rect x="12" y="118" width="24" height="20" rx="8" fill="#C4856A"/>
+              <circle cx="123" cy="148" r="18" fill="none" stroke="#5C3010" stroke-width="1.5" opacity=".7"/>
+              <circle cx="123" cy="148" r="10" fill="none" stroke="#5C3010" stroke-width="1.5" opacity=".6"/>
+              <circle cx="123" cy="148" r="4" fill="#5C3010" opacity=".6"/>
+              <path d="M85 148 Q100 135 115 140" stroke="#5C3010" stroke-width="1.2" fill="none" opacity=".5"/>
+              <path d="M131 140 Q145 135 160 148" stroke="#5C3010" stroke-width="1.2" fill="none" opacity=".5"/>
+              <path d="M90 165 Q100 175 115 170" stroke="#5C3010" stroke-width="1.2" fill="none" opacity=".5"/>
+            </g>
+            <text x="200" y="80" font-size="30" fill="#5C3010" opacity=".15">✦</text>
+          </svg>
+        </div>
+        <div class="g-overlay"><span class="g-label">Bridal Mehendi</span></div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-bg" style="background:#B8907A;height:100%;width:100%;position:absolute;inset:0">
+          <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="300" height="260" fill="#B8907A"/>
+            <g transform="translate(50,40)">
+              <rect x="20" y="60" width="32" height="40" rx="8" fill="#D4A07A"/>
+              <rect x="20" y="40" width="32" height="30" rx="10" fill="#C2185B" opacity=".85"/>
+              <rect x="60" y="50" width="32" height="50" rx="8" fill="#D4A07A"/>
+              <rect x="60" y="28" width="32" height="30" rx="10" fill="#E8872B" opacity=".85"/>
+              <rect x="100" y="45" width="32" height="55" rx="8" fill="#D4A07A"/>
+              <rect x="100" y="22" width="32" height="30" rx="10" fill="#C2185B" opacity=".75"/>
+              <rect x="140" y="50" width="32" height="50" rx="8" fill="#D4A07A"/>
+              <rect x="140" y="28" width="32" height="30" rx="10" fill="#E8872B" opacity=".8"/>
+              <circle cx="36" cy="50" r="3" fill="white" opacity=".5"/>
+              <circle cx="76" cy="38" r="3" fill="white" opacity=".5"/>
+              <circle cx="116" cy="33" r="3" fill="white" opacity=".5"/>
+            </g>
+            <text x="220" y="200" font-size="26" fill="#C2185B" opacity=".2">✦</text>
+          </svg>
+        </div>
+        <div class="g-overlay"><span class="g-label">Nail Art</span></div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-bg" style="background:#D4B898;height:100%;width:100%;position:absolute;inset:0">
+          <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="300" height="260" fill="#D4B898"/>
+            <rect x="80" y="60" width="55" height="120" rx="14" fill="#C4906A"/>
+            <rect x="85" y="48" width="45" height="20" rx="8" fill="#A07040"/>
+            <circle cx="107" cy="115" r="14" fill="rgba(255,255,255,.2)"/>
+            <rect x="165" y="75" width="60" height="105" rx="14" fill="#E8D0B8"/>
+            <rect x="170" y="63" width="50" height="20" rx="8" fill="#C4A07A"/>
+            <circle cx="195" cy="122" r="12" fill="rgba(194,24,91,.15)"/>
+            <rect x="220" y="90" width="45" height="90" rx="12" fill="#C4856A" opacity=".7"/>
+            <text x="38" y="200" font-size="24" fill="#C4906A" opacity=".3">✦</text>
+          </svg>
+        </div>
+        <div class="g-overlay"><span class="g-label">Skincare &amp; Glow</span></div>
+      </div>
+
+      <div class="g-item">
+        <div class="g-bg" style="background:#E8C8A8;height:100%;width:100%;position:absolute;inset:0">
+          <svg viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <rect width="300" height="260" fill="#E8C8A8"/>
+            <ellipse cx="150" cy="80" rx="80" ry="72" fill="#1C0A05"/>
+            <path d="M70 60 Q55 180 85 280 Q110 300 150 302 Q190 300 215 280 Q245 180 230 60" fill="#1C0A05"/>
+            <ellipse cx="150" cy="130" rx="60" ry="72" fill="#C4856A"/>
+            <ellipse cx="150" cy="22" rx="48" ry="26" fill="#2C1205"/>
+            <ellipse cx="190" cy="30" rx="22" ry="16" fill="#2C1205"/>
+            <circle cx="196" cy="35" r="6" fill="#E8872B" opacity=".8"/>
+            <ellipse cx="172" cy="28" rx="12" ry="6" fill="none" stroke="#E8872B" stroke-width="1.5" opacity=".5"/>
+            <ellipse cx="128" cy="130" rx="9" ry="7" fill="#1C0A05"/>
+            <ellipse cx="172" cy="130" rx="9" ry="7" fill="#1C0A05"/>
+            <path d="M137 160 Q150 168 163 160" stroke="#C2185B" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <text x="38" y="230" font-size="22" fill="#C4906A" opacity=".25">✦</text>
+          </svg>
+        </div>
+        <div class="g-overlay"><span class="g-label">Hair Styling</span></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" class="btn-ghost">
+        View More on Instagram @make.me.salon ↗
+      </a>
+    </div>
+  </div>
+</div><!-- END GALLERY PAGE -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════╗
+     ║  PAGE: CONTACT / BOOKING                                  ║
+     ╚══════════════════════════════════════════════════════════╝ -->
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <p class="sec-tag">Visit &amp; Book</p>
+    <h1 class="sec-title">Come See <em>Us</em></h1>
+    <div class="contact-grid">
+      <div>
+        <p class="sec-sub" style="margin-bottom:1.5rem">We are conveniently located in Abhay Data Complex, Madhuban Road, Satya Nagar, Nirala Nagar, Raebareli. Walk in any time or book ahead to secure your slot!</p>
+
+        <div style="background:var(--marigold-pale);border-radius:4px;padding:1.8rem;border-left:4px solid var(--marigold);margin-bottom:1.2rem">
+          <div style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold);margin-bottom:.8rem">📍 Our Location</div>
+          <div style="font-size:1rem;color:var(--deep);line-height:1.65">
+            Abhay Data Complex,<br/>
+            Madhuban Road, Satya Nagar,<br/>
+            Nirala Nagar, Raebareli,<br/>
+            Uttar Pradesh – 229001
+          </div>
+        </div>
+
+        <div style="background:var(--rose-pale);border-radius:4px;padding:1.5rem;border-left:4px solid var(--rose);margin-bottom:1.2rem">
+          <div style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem">📸 Instagram</div>
+          <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" style="color:var(--rose);font-size:.95rem;font-weight:500;text-decoration:none">@make.me.salon ↗</a>
+        </div>
+
+        <div class="info-block">
+          <div style="font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold-light);margin-bottom:1rem">🕐 Opening Hours</div>
+          <div class="info-row"><span>Monday – Saturday</span><span style="color:var(--marigold-light);font-weight:500">10:00 AM – 7:00 PM</span></div>
+          <div class="info-row"><span>Sunday</span><span style="color:var(--marigold-light);font-weight:500">10:00 AM – 5:00 PM</span></div>
+          <div class="info-row" style="border:none;margin-top:.5rem">
+            <span style="font-size:.76rem;color:rgba(250,246,242,.4)">Walk-ins welcome · Appointments preferred</span>
+          </div>
+        </div>
+
+        <div class="map-placeholder" style="margin-top:1.5rem">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3564.123456789!2d81.2350!3d26.2310!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsEFiaGF5IERhdGEgQ29tcGxleCwgTWFkaHViYW4gUmQsIFNhdHlhIE5hZ2FyLCBOaXJhbGEgTmFnYXIsIFJhZWJhcmVsaQ!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Make Me Salon Location – Nirala Nagar, Raebareli"
+            style="filter:sepia(20%) saturate(80%)"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- BOOKING FORM -->
+      <div class="booking-form">
+        <div class="form-title">Book Appointment</div>
+        <p class="form-sub">Pick a date and choose an available time slot below.</p>
+
+        <div class="f-row">
+          <div class="f-group">
+            <label>First Name</label>
+            <input type="text" id="bk-fname" placeholder="Priya"/>
+          </div>
+          <div class="f-group">
+            <label>Last Name</label>
+            <input type="text" id="bk-lname" placeholder="Sharma"/>
+          </div>
+        </div>
+        <div class="f-group">
+          <label>Mobile Number</label>
+          <input type="tel" id="bk-phone" placeholder="+91 98765 43210"/>
+        </div>
+        <div class="f-group">
+          <label>Email (Optional)</label>
+          <input type="email" id="bk-email" placeholder="priya@example.com"/>
+        </div>
+        <div class="f-group">
+          <label>Service Required</label>
+          <select id="bk-service">
+            <option value="">Select a service</option>
+            <option>Hair Styling / Cut / Colour</option>
+            <option>Makeup (Party / Engagement)</option>
+            <option>Bridal Makeup Package</option>
+            <option>Facial / Skincare</option>
+            <option>Nail Art / Manicure / Pedicure</option>
+            <option>Mehendi</option>
+            <option>Waxing / Threading</option>
+            <option>Hair Spa / Treatment</option>
+            <option>Full Bridal Package</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="f-group">
+          <label>Preferred Date</label>
+          <input type="date" id="bk-date" onchange="onDateChange()"/>
+        </div>
+
+        <div class="f-group" id="slot-wrapper" style="display:none">
+          <label>Available Time Slots</label>
+          <div class="slot-grid" id="slot-grid"></div>
+          <div class="slot-legend">
+            <span><span class="legend-swatch av"></span>Available</span>
+            <span><span class="legend-swatch sel"></span>Selected</span>
+            <span><span class="legend-swatch bk"></span>Booked</span>
+          </div>
+          <div class="slot-status pick-date" id="slot-status">Choose a slot above.</div>
+        </div>
+        <div class="slot-status pick-date" id="slot-prompt">Select a date first to see available time slots.</div>
+
+        <div class="f-group">
+          <label>Special Requests / Notes</label>
+          <textarea id="bk-notes" placeholder="Tell us more — is this for a wedding, party, or a regular visit?"></textarea>
+        </div>
+        <button class="btn-submit" id="bk-submit" onclick="handleBook(this)">Request Appointment</button>
+        <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem">
+          Or reach us directly on Instagram:
+          <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" style="color:var(--rose);font-weight:500;text-decoration:none"> @make.me.salon ↗</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══ CUSTOMER: MANAGE / CANCEL MY BOOKING ═══════════════
+         Lets a customer look up and cancel their own appointment
+         using the phone number they booked with, freeing the slot
+         back up for others. -->
+    <div style="max-width:640px;margin:3.5rem auto 0;background:var(--white);border-radius:4px;padding:2.2rem;border:1.5px solid var(--soft)">
+      <p class="sec-tag" style="margin-bottom:.4rem">Need to Reschedule?</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--deep);margin-bottom:.6rem">
+        Manage or Cancel Your Booking
+      </h3>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.3rem;line-height:1.6">
+        Enter the mobile number you booked with to find your appointment. You can cancel it here — this will free up the slot immediately.
+      </p>
+      <div class="f-row">
+        <div class="f-group" style="margin-bottom:.8rem">
+          <label>Mobile Number Used for Booking</label>
+          <input type="tel" id="lookup-phone" placeholder="+91 98765 43210"/>
+        </div>
+        <div class="f-group" style="margin-bottom:.8rem">
+          <label>Appointment Date</label>
+          <input type="date" id="lookup-date"/>
+        </div>
+      </div>
+      <button class="btn-ghost" style="width:100%;border-color:var(--rose);color:var(--rose)" onclick="findMyBooking()">Find My Booking</button>
+      <div id="lookup-results" style="margin-top:1.2rem"></div>
+    </div>
+
+    <!-- OWNER PANEL — ADMIN ACCESS ONLY.
+         This panel is NOT linked anywhere on the public site.
+         Staff open it by adding ?admin=1 to the page URL, then
+         entering the staff password. Nothing here is visible to
+         ordinary visitors browsing the page normally. -->
+    <div id="admin-panel" style="display:none;margin-top:2.5rem;background:var(--deep);border-radius:4px;padding:1.8rem;color:var(--cream)">
+
+      <!-- Password gate -->
+      <div id="admin-login" style="max-width:320px;margin:0 auto">
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-light);margin-bottom:1rem;text-align:center">
+          🔒 Staff Login
+        </div>
+        <input type="password" id="admin-password" placeholder="Staff password" autocomplete="off"
+               style="width:100%;padding:.75rem 1rem;border:1.5px solid rgba(255,255,255,.15);border-radius:2px;background:rgba(255,255,255,.06);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;margin-bottom:.7rem"
+               onkeydown="if(event.key==='Enter') checkAdminPassword()"/>
+        <button onclick="checkAdminPassword()" style="width:100%;background:var(--rose);color:var(--white);border:none;padding:.75rem;border-radius:2px;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer">
+          Unlock Bookings
+        </button>
+        <div id="admin-login-error" style="color:var(--rose);font-size:.78rem;margin-top:.6rem;text-align:center;display:none">Incorrect password.</div>
+      </div>
+
+      <!-- Bookings list, shown only after correct password -->
+      <div id="admin-content" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.7rem">
+          <div style="font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--marigold-light)">
+            📋 Bookings Saved on This Device
+          </div>
+          <div style="display:flex;gap:.6rem">
+            <button onclick="refreshAdminPanel()" style="background:rgba(255,255,255,.08);color:var(--cream);border:none;padding:.4rem .8rem;border-radius:2px;font-size:.7rem;cursor:pointer">Refresh</button>
+            <button onclick="clearAllBookingsPrompt()" style="background:var(--rose);color:var(--white);border:none;padding:.4rem .8rem;border-radius:2px;font-size:.7rem;cursor:pointer">Clear All</button>
+            <button onclick="adminLogout()" style="background:rgba(255,255,255,.08);color:var(--cream);border:none;padding:.4rem .8rem;border-radius:2px;font-size:.7rem;cursor:pointer">Log Out</button>
+          </div>
+        </div>
+        <div id="admin-bookings-list" style="font-size:.82rem;color:rgba(250,246,242,.8)"></div>
+        <p style="font-size:.7rem;color:rgba(250,246,242,.4);margin-top:1rem;line-height:1.5">
+          Note: this list only shows bookings made on this exact browser/device. For appointments booked from customers' own phones, please confirm details directly with them via the phone number they entered.
+        </p>
+      </div>
+    </div>
+  </div>
+</div><!-- END CONTACT PAGE -->
+
+
+<!-- ═══ FOOTER (shared) ══════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="logo-dot" style="background:var(--marigold)"></div>
+        Make<span>Me</span>&nbsp;Salon
+      </div>
+      <p class="footer-desc">Raebareli's trusted beauty destination. Every woman deserves to feel beautiful — and we are here to make that happen.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">IG</a>
+        <a href="https://wa.me/91" target="_blank" rel="noopener" class="soc-btn" aria-label="WhatsApp">WA</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('services')">Services</a></li>
+        <li><a href="#" onclick="showPage('about')">About Us</a></li>
+        <li><a href="#" onclick="showPage('founder')">Our Founder</a></li>
+        <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+        <li><a href="#" onclick="showPage('contact')">Book Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>Abhay Data Complex</li>
+        <li>Madhuban Road, Satya Nagar</li>
+        <li>Nirala Nagar, Raebareli</li>
+        <li>Uttar Pradesh – 229001</li>
+        <li style="margin-top:.5rem"><a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener">@make.me.salon</a></li>
+        <li>Mon–Sat: 10AM – 7PM</li>
+        <li>Sun: 10AM – 5PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Make Me Salon by Jaya Singh. All rights reserved.</span>
+    <span>Made with ♥ for Raebareli</span>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   PAGE ROUTING
+   ══════════════════════════════════════════════════════════ */
+const pages = ['home','services','about','founder','gallery','contact'];
+
+function showPage(id){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.remove('active');
+    const btn = document.getElementById('nav-'+p);
+    if(btn) btn.classList.remove('active-link');
+  });
+  document.getElementById('page-'+id).classList.add('active');
+  const activeBtn = document.getElementById('nav-'+id);
+  if(activeBtn) activeBtn.classList.add('active-link');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(initReveal,100);
+}
+
+/* MOBILE MENU */
+function toggleMob(){
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('mainNav');
+  nav.classList.toggle('nav-scrolled',window.scrollY>50);
+});
+
+/* SCROLL REVEAL */
+function initReveal(){
+  const els=document.querySelectorAll('.page.active .reveal:not(.v)');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}});
+  },{threshold:.12});
+  els.forEach(el=>obs.observe(el));
+}
+initReveal();
+
+/* FOOTER LINK FIX */
+document.querySelectorAll('footer a[onclick]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault()});
+});
+
+/* ══════════════════════════════════════════════════════════
+   TIME-SLOT BOOKING SYSTEM
+   Uses the browser's built-in localStorage — a real, standard
+   web feature that works in any browser, on any hosting, with
+   no server or special environment required.
+
+   NOTE ON SCOPE: localStorage is per-browser/per-device. It will
+   reliably stop the SAME visitor from double-booking a slot they
+   (or anyone using that exact browser) already booked, and it
+   keeps every booking saved permanently in that browser until
+   cleared. It does NOT sync across different customers' separate
+   phones/computers in real time — true cross-device real-time
+   sync needs a server/database (e.g. Firebase, Google Sheets +
+   Apps Script, or a small backend). Ask if you'd like that added.
+   ══════════════════════════════════════════════════════════ */
+
+const BOOKINGS_KEY = 'makeMeSalonBookings';
+
+// Generate slot labels 10:00 AM to 6:30 PM in 30-min steps (last appt 6:30, salon closes 7)
+function generateSlots(){
+  const slots = [];
+  let h = 10, m = 0;
+  while (h < 19) {
+    const hour12 = h % 12 === 0 ? 12 : h % 12;
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const label = hour12 + ':' + (m === 0 ? '00' : '30') + ' ' + ampm;
+    const value = String(h).padStart(2,'0') + ':' + (m === 0 ? '00' : '30');
+    slots.push({ value, label });
+    m += 30;
+    if (m === 60) { m = 0; h++; }
+  }
+  return slots;
+}
+const ALL_SLOTS = generateSlots();
+
+let selectedSlotValue = null;
+
+function todayStr(){
+  const d = new Date();
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  const dd = String(d.getDate()).padStart(2,'0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+// Read all bookings from localStorage safely
+function getAllBookings(){
+  try {
+    const raw = localStorage.getItem(BOOKINGS_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (err) {
+    console.error('Could not read bookings from storage:', err);
+    return [];
+  }
+}
+
+// Save all bookings back to localStorage safely
+function saveAllBookings(bookings){
+  try {
+    localStorage.setItem(BOOKINGS_KEY, JSON.stringify(bookings));
+    return true;
+  } catch (err) {
+    console.error('Could not save bookings to storage:', err);
+    return false;
+  }
+}
+
+function getBookedSlotsForDate(date){
+  return getAllBookings()
+    .filter(b => b.date === date)
+    .map(b => b.time);
+}
+
+// Set min date = today, so people can't pick a past date
+window.addEventListener('DOMContentLoaded', () => {
+  const dateInput = document.getElementById('bk-date');
+  if (dateInput) {
+    dateInput.min = todayStr();
+  }
+  initAdminAccess();
+});
+
+function onDateChange(){
+  const date = document.getElementById('bk-date').value;
+  const wrapper = document.getElementById('slot-wrapper');
+  const prompt = document.getElementById('slot-prompt');
+  selectedSlotValue = null;
+
+  if (!date){
+    wrapper.style.display = 'none';
+    prompt.style.display = 'block';
+    return;
+  }
+
+  prompt.style.display = 'none';
+  wrapper.style.display = 'block';
+  renderSlotGrid(date);
+}
+
+function renderSlotGrid(date){
+  const grid = document.getElementById('slot-grid');
+  const statusEl = document.getElementById('slot-status');
+  grid.innerHTML = '';
+
+  const bookedSlotsForDate = getBookedSlotsForDate(date);
+  const now = new Date();
+  const isToday = date === todayStr();
+
+  ALL_SLOTS.forEach(slot => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'slot-btn';
+    btn.textContent = slot.label;
+
+    const isBooked = bookedSlotsForDate.includes(slot.value);
+
+    let isPast = false;
+    if (isToday) {
+      const [sh, sm] = slot.value.split(':').map(Number);
+      const slotTime = sh * 60 + sm;
+      const nowTime = now.getHours() * 60 + now.getMinutes();
+      if (slotTime <= nowTime) isPast = true;
+    }
+
+    if (isBooked || isPast) {
+      btn.disabled = true;
+      btn.title = isBooked ? 'Time Slot Not Available — already booked' : 'This time has already passed today';
+    } else {
+      btn.onclick = () => selectSlot(slot.value, btn);
+    }
+
+    grid.appendChild(btn);
+  });
+
+  statusEl.className = 'slot-status pick-date';
+  statusEl.textContent = 'Choose an available slot above.';
+}
+
+function selectSlot(value, btnEl){
+  document.querySelectorAll('.slot-btn.selected').forEach(b => b.classList.remove('selected'));
+  btnEl.classList.add('selected');
+  selectedSlotValue = value;
+  const statusEl = document.getElementById('slot-status');
+  statusEl.className = 'slot-status ok';
+  statusEl.textContent = '✓ Slot selected: ' + btnEl.textContent;
+}
+
+function handleBook(btn){
+  const fname = document.getElementById('bk-fname').value.trim();
+  const lname = document.getElementById('bk-lname').value.trim();
+  const phone = document.getElementById('bk-phone').value.trim();
+  const email = document.getElementById('bk-email').value.trim();
+  const service = document.getElementById('bk-service').value;
+  const date = document.getElementById('bk-date').value;
+  const notes = document.getElementById('bk-notes').value.trim();
+  const statusEl = document.getElementById('slot-status');
+
+  if (!fname || !phone){
+    alert('Please enter your name and mobile number.');
+    return;
+  }
+  if (!date){
+    alert('Please select a preferred date.');
+    return;
+  }
+  if (!selectedSlotValue){
+    if (statusEl){
+      statusEl.className = 'slot-status taken';
+      statusEl.textContent = '⚠ Please pick a time slot before booking.';
+    }
+    return;
+  }
+
+  // Re-check right before saving in case this exact slot got booked
+  // (e.g. in another tab) since the grid was last rendered.
+  const stillFree = !getBookedSlotsForDate(date).includes(selectedSlotValue);
+  if (!stillFree) {
+    statusEl.className = 'slot-status taken';
+    statusEl.textContent = '✕ Time Slot Not Available — this slot was just booked. Please pick another.';
+    renderSlotGrid(date);
+    return;
+  }
+
+  const newBooking = {
+    id: 'bk_' + Date.now() + '_' + Math.random().toString(36).slice(2,8),
+    fname, lname, phone, email, service, notes,
+    date, time: selectedSlotValue,
+    bookedAt: new Date().toISOString()
+  };
+
+  const bookings = getAllBookings();
+  bookings.push(newBooking);
+  const saved = saveAllBookings(bookings);
+
+  if (saved) {
+    btn.textContent = '✓ Appointment Booked!';
+    btn.style.background = '#2C1505';
+    btn.style.fontSize = '.76rem';
+    btn.disabled = true;
+    statusEl.className = 'slot-status ok';
+    statusEl.textContent = '✓ Booked for ' + date + ' at ' + selectedSlotValue + '. We will see you then!';
+    renderSlotGrid(date); // lock the chosen slot visually
+    refreshAdminPanel(); // keep staff panel in sync if it's open
+  } else {
+    statusEl.className = 'slot-status taken';
+    statusEl.textContent = '✕ Something went wrong saving your booking. Please try again, or contact us on Instagram.';
+  }
+}
+
+/* ── STAFF / OWNER BOOKINGS PANEL — ADMIN ACCESS ONLY ──────
+   This panel has NO visible link anywhere on the public site.
+   Staff access it by:
+     1. Opening the page with ?admin=1 in the URL
+        (e.g. yoursite.html?admin=1#contact), AND
+     2. Entering the staff password below.
+
+   IMPORTANT HONESTY NOTE: this is a plain static HTML file with
+   no server, so this password check happens in the browser, not
+   on a secure backend — a technically determined person could
+   still find it by reading the page source. It is enough to stop
+   ordinary customers from stumbling onto bookings data (which is
+   the actual risk here), but it is NOT bank-grade security. If
+   this salon's booking data needs to be properly protected, that
+   requires a real backend with server-side authentication — let
+   us know if you'd like that built instead.
+   CHANGE THIS PASSWORD to something only Jaya/staff know: */
+const ADMIN_PASSWORD = 'makemesalon2026';
+const ADMIN_SESSION_KEY = 'makeMeSalonAdminUnlocked';
+
+function initAdminAccess(){
+  const params = new URLSearchParams(window.location.search);
+  const wantsAdmin = params.get('admin') === '1';
+  const panel = document.getElementById('admin-panel');
+  if (!wantsAdmin || !panel) return;
+
+  panel.style.display = 'block';
+
+  // If already unlocked earlier this browser session, skip straight to the list
+  if (sessionStorage.getItem(ADMIN_SESSION_KEY) === 'true'){
+    showAdminContent();
+  } else {
+    document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-content').style.display = 'none';
+  }
+
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function checkAdminPassword(){
+  const input = document.getElementById('admin-password');
+  const errorEl = document.getElementById('admin-login-error');
+  if (input.value === ADMIN_PASSWORD){
+    sessionStorage.setItem(ADMIN_SESSION_KEY, 'true');
+    errorEl.style.display = 'none';
+    input.value = '';
+    showAdminContent();
+  } else {
+    errorEl.style.display = 'block';
+    input.value = '';
+    input.focus();
+  }
+}
+
+function showAdminContent(){
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('admin-content').style.display = 'block';
+  refreshAdminPanel();
+}
+
+function adminLogout(){
+  sessionStorage.removeItem(ADMIN_SESSION_KEY);
+  document.getElementById('admin-content').style.display = 'none';
+  document.getElementById('admin-login').style.display = 'block';
+}
+
+function formatBookingTime(slotValue){
+  const [h, m] = slotValue.split(':').map(Number);
+  const hour12 = h % 12 === 0 ? 12 : h % 12;
+  const ampm = h < 12 ? 'AM' : 'PM';
+  return hour12 + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+}
+
+function refreshAdminPanel(){
+  const listEl = document.getElementById('admin-bookings-list');
+  const bookings = getAllBookings()
+    .slice()
+    .sort((a,b) => (b.date+b.time).localeCompare(a.date+a.time));
+
+  if (!bookings.length){
+    listEl.innerHTML = '<p style="color:rgba(250,246,242,.5)">No bookings saved on this device yet.</p>';
+    return;
+  }
+
+  listEl.innerHTML = bookings.map(b => `
+    <div style="padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+      <div>
+        <div style="font-weight:600;color:var(--white)">${escapeHtml(b.fname)} ${escapeHtml(b.lname || '')}</div>
+        <div style="font-size:.74rem;color:rgba(250,246,242,.55);margin-top:.2rem">
+          📞 ${escapeHtml(b.phone)} ${b.email ? ' · ✉ ' + escapeHtml(b.email) : ''}
+        </div>
+        <div style="font-size:.74rem;color:rgba(250,246,242,.55);margin-top:.15rem">
+          ${escapeHtml(b.service || 'Service not specified')}
+        </div>
+        ${b.notes ? `<div style="font-size:.72rem;color:rgba(250,246,242,.4);margin-top:.25rem;font-style:italic">"${escapeHtml(b.notes)}"</div>` : ''}
+      </div>
+      <div style="text-align:right;white-space:nowrap">
+        <div style="color:var(--marigold-light);font-weight:600">${escapeHtml(b.date)}</div>
+        <div style="font-size:.78rem;color:rgba(250,246,242,.7)">${formatBookingTime(b.time)}</div>
+        <button onclick="cancelBooking('${b.id}')" style="margin-top:.4rem;background:none;border:1px solid rgba(255,255,255,.2);color:rgba(250,246,242,.6);font-size:.65rem;padding:.25rem .6rem;border-radius:2px;cursor:pointer">Cancel</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function escapeHtml(str){
+  const div = document.createElement('div');
+  div.textContent = str == null ? '' : String(str);
+  return div.innerHTML;
+}
+
+function cancelBooking(id){
+  if (!confirm('Cancel this booking? You can notify the customer via WhatsApp next.')) return;
+
+  const bookings = getAllBookings();
+  const booking = bookings.find(b => b.id === id);
+  if (!booking) return;
+
+  // Remove the booking and free up the slot
+  saveAllBookings(bookings.filter(b => b.id !== id));
+  refreshAdminPanel();
+
+  // Sync slot grid if open
+  const dateInput = document.getElementById('bk-date');
+  if (dateInput && dateInput.value) renderSlotGrid(dateInput.value);
+
+  const listEl = document.getElementById('admin-bookings-list');
+
+  // Guard: if there's no usable phone number on this booking, skip the
+  // WhatsApp step entirely rather than letting a bad/missing number
+  // throw an error after the booking has already been deleted.
+  const rawPhone = (booking.phone || '').replace(/\D/g, '');
+  if (!rawPhone) {
+    const notice = document.createElement('div');
+    notice.style.cssText = 'background:rgba(232,135,43,.15);border:1px solid rgba(232,135,43,.3);border-radius:3px;padding:1rem 1.2rem;margin-bottom:1rem;font-size:.82rem;color:var(--cream)';
+    notice.innerHTML = `
+      <div style="font-weight:600;color:var(--marigold-light);margin-bottom:.4rem">✓ Booking cancelled</div>
+      <div style="color:rgba(250,246,242,.65);font-size:.76rem">No valid phone number on file for ${escapeHtml(booking.fname)} — please notify them directly.</div>
+      <button onclick="this.parentElement.remove()" style="margin-top:.6rem;background:none;border:none;color:rgba(250,246,242,.4);font-size:.74rem;cursor:pointer">Dismiss</button>
+    `;
+    listEl.prepend(notice);
+    return;
+  }
+
+  // Build WhatsApp notification message
+  const slotLabel = formatBookingTime(booking.time);
+  const msg = `Namaste ${booking.fname} ji 🙏\n\nWe regret to inform you that your appointment at *Make Me Salon* has been cancelled by our team.\n\n📅 Date: ${booking.date}\n⏰ Time: ${slotLabel}\n💄 Service: ${booking.service || 'Your booking'}\n\nWe sincerely apologise for the inconvenience. Please contact us to reschedule at your convenience.\n\n— Jaya Singh, Make Me Salon\n📸 @make.me.salon`;
+
+  const waPhone = rawPhone.length === 10 ? '91' + rawPhone : rawPhone; // add India code if a 10-digit local number was entered
+  const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`;
+
+  // Show a small inline notification with a one-tap WhatsApp link
+  const notice = document.createElement('div');
+  notice.style.cssText = 'background:rgba(232,135,43,.15);border:1px solid rgba(232,135,43,.3);border-radius:3px;padding:1rem 1.2rem;margin-bottom:1rem;font-size:.82rem;color:var(--cream)';
+  notice.innerHTML = `
+    <div style="font-weight:600;color:var(--marigold-light);margin-bottom:.4rem">✓ Booking cancelled — notify ${escapeHtml(booking.fname)}?</div>
+    <div style="color:rgba(250,246,242,.65);margin-bottom:.7rem;font-size:.76rem">Tap below to open WhatsApp with a pre-filled cancellation message.</div>
+    <a href="${waUrl}" target="_blank" rel="noopener"
+       style="display:inline-block;background:#25D366;color:#fff;padding:.45rem 1rem;border-radius:2px;font-size:.74rem;font-weight:600;letter-spacing:.05em;text-decoration:none;text-transform:uppercase">
+      📲 Send WhatsApp to ${escapeHtml(booking.fname)}
+    </a>
+    <button onclick="this.parentElement.remove()" style="margin-left:.6rem;background:none;border:none;color:rgba(250,246,242,.4);font-size:.74rem;cursor:pointer">Dismiss</button>
+  `;
+  listEl.prepend(notice);
+}
+
+function clearAllBookingsPrompt(){
+  if (!confirm('This will permanently delete ALL bookings saved on this device. Continue?')) return;
+  saveAllBookings([]);
+  refreshAdminPanel();
+  const dateInput = document.getElementById('bk-date');
+  if (dateInput && dateInput.value) renderSlotGrid(dateInput.value);
+}
+
+/* ── CUSTOMER: FIND & CANCEL MY OWN BOOKING ─────────────────
+   A customer looks up their booking using the same phone number
+   (and optionally date) they booked with, and can cancel it
+   themselves — instantly freeing the time slot back up. ── */
+function normalizePhone(phone){
+  const digitsOnly = String(phone || '').replace(/\D/g, ''); // strip +91/spaces/dashes
+  return digitsOnly.slice(-10); // compare last 10 digits so country code differences don't break matching
+}
+
+function findMyBooking(){
+  const phoneInput = document.getElementById('lookup-phone').value;
+  const dateInput = document.getElementById('lookup-date').value;
+  const resultsEl = document.getElementById('lookup-results');
+  const normPhone = normalizePhone(phoneInput);
+
+  if (!normPhone){
+    resultsEl.innerHTML = '<p style="color:var(--rose);font-size:.82rem;margin-top:.5rem">Please enter the mobile number you used to book.</p>';
+    return;
+  }
+
+  let matches = getAllBookings().filter(b => normalizePhone(b.phone) === normPhone);
+  if (dateInput){
+    matches = matches.filter(b => b.date === dateInput);
+  }
+  matches.sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
+
+  if (!matches.length){
+    resultsEl.innerHTML = `
+      <p style="color:var(--muted);font-size:.82rem;margin-top:.8rem;line-height:1.55">
+        No booking found on this device for that number${dateInput ? ' and date' : ''}.
+        This can happen if you booked from a different phone/browser — in that case
+        please message us on
+        <a href="https://www.instagram.com/make.me.salon/" target="_blank" rel="noopener" style="color:var(--rose);font-weight:500">@make.me.salon</a>
+        to cancel or reschedule.
+      </p>`;
+    return;
+  }
+
+  resultsEl.innerHTML = matches.map(b => `
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;background:var(--cream);border-radius:3px;padding:1rem 1.2rem;margin-top:.7rem;border-left:3px solid var(--marigold)">
+      <div>
+        <div style="font-weight:600;color:var(--deep);font-size:.92rem">${escapeHtml(b.fname)} ${escapeHtml(b.lname || '')}</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem">${escapeHtml(b.service || 'Service not specified')}</div>
+        <div style="font-size:.82rem;color:var(--rose);font-weight:600;margin-top:.3rem">${escapeHtml(b.date)} · ${formatBookingTime(b.time)}</div>
+      </div>
+      <button onclick="customerCancelBooking('${b.id}')" style="background:var(--rose);color:var(--white);border:none;padding:.5rem 1.1rem;border-radius:2px;font-size:.74rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;cursor:pointer">Cancel This Booking</button>
+    </div>
+  `).join('');
+}
+
+function customerCancelBooking(id){
+  if (!confirm('Cancel this appointment? Your time slot will be released immediately.')) return;
+  const bookings = getAllBookings().filter(b => b.id !== id);
+  saveAllBookings(bookings);
+
+  // Re-run the lookup so the cancelled booking disappears from view
+  findMyBooking();
+
+  // Keep the main slot picker in sync if the same date is open
+  const dateInput = document.getElementById('bk-date');
+  if (dateInput && dateInput.value) renderSlotGrid(dateInput.value);
+
+  // Keep staff panel in sync if it happens to be open
+  refreshAdminPanel();
+}
+
+</script>
+</body>
+</html>
