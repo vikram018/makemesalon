@@ -58,6 +58,10 @@ nav{
   flex-shrink:0;
 }
 .logo span{color:var(--rose)}
+.logo-mark{
+  height:38px;width:auto;flex-shrink:0;
+  display:block;
+}
 
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-links a,.nav-links button{
@@ -197,6 +201,10 @@ nav{
   position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;
   background:rgba(255,255,255,.88);backdrop-filter:blur(8px);
   border-radius:4px;padding:1.2rem;
+  display:flex;align-items:center;gap:.9rem;
+}
+.hero-art-logo{
+  width:46px;height:46px;object-fit:contain;flex-shrink:0;
 }
 .hero-art-title{
   font-family:'Playfair Display',serif;
@@ -602,6 +610,7 @@ footer{background:var(--deep);color:var(--cream);padding:4rem 8% 2rem}
   color:var(--white);display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;
 }
 .footer-brand-logo span{color:var(--marigold)}
+.footer-brand-logo img{height:34px;width:auto}
 .footer-desc{font-size:.85rem;color:rgba(250,246,242,.5);line-height:1.75;max-width:30ch}
 .footer-social{display:flex;gap:.7rem;margin-top:1.5rem}
 .soc-btn{
@@ -676,7 +685,7 @@ footer{background:var(--deep);color:var(--cream);padding:4rem 8% 2rem}
 <!-- ═══ NAVIGATION ══════════════════════════════════════════ -->
 <nav id="mainNav">
   <div class="logo" onclick="showPage('home')">
-    <div class="logo-dot"></div>
+    <img src="LOGO_DATA_URI" alt="Make Me Salon logo" class="logo-mark"/>
     Make<span>Me</span>&nbsp;Salon
   </div>
   <ul class="nav-links">
@@ -788,8 +797,11 @@ footer{background:var(--deep);color:var(--cream);padding:4rem 8% 2rem}
           <text x="50" y="380" font-size="12" fill="#E8872B" opacity=".2">✦</text>
         </svg>
         <div class="hero-art-card">
-          <div class="hero-art-title">Make Me Salon</div>
-          <div class="hero-art-sub">✦ Founded by Jaya Singh · Raebareli</div>
+          <img src="LOGO_DATA_URI" alt="Make Me Salon logo" class="hero-art-logo"/>
+          <div>
+            <div class="hero-art-title">Make Me Salon</div>
+            <div class="hero-art-sub">✦ Founded by Jaya Singh · Raebareli</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1650,7 +1662,7 @@ footer{background:var(--deep);color:var(--cream);padding:4rem 8% 2rem}
   <div class="footer-top">
     <div>
       <div class="footer-brand-logo">
-        <div class="logo-dot" style="background:var(--marigold)"></div>
+        <img src="LOGO_DATA_URI" alt="Make Me Salon logo"/>
         Make<span>Me</span>&nbsp;Salon
       </div>
       <p class="footer-desc">Raebareli's trusted beauty destination. Every woman deserves to feel beautiful — and we are here to make that happen.</p>
@@ -2094,7 +2106,7 @@ function cancelBooking(id){
   const slotLabel = formatBookingTime(booking.time);
   const msg = `Namaste ${booking.fname} ji 🙏\n\nWe regret to inform you that your appointment at *Make Me Salon* has been cancelled by our team.\n\n📅 Date: ${booking.date}\n⏰ Time: ${slotLabel}\n💄 Service: ${booking.service || 'Your booking'}\n\nWe sincerely apologise for the inconvenience. Please contact us to reschedule at your convenience.\n\n— Jaya Singh, Make Me Salon\n📸 @make.me.salon`;
 
-  const waPhone = rawPhone.length === 10 ? '91' + rawPhone : rawPhone; // add India code if a 10-digit local number was entered
+  const waPhone = rawPhone.length === 10 ? '8957460520' + rawPhone : rawPhone; // add India code if a 10-digit local number was entered
   const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`;
 
   // Show a small inline notification with a one-tap WhatsApp link
